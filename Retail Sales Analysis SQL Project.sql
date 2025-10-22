@@ -114,12 +114,12 @@ SELECT *
 FROM retail_sales
 WHERE invoice_date = '2022-11-05';
 
---2.Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022.
+--2.Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 2 in the month of Nov-2022.
 SELECT *
 FROM retail_sales
 WHERE category='Clothing'
 	  AND
-	  quantity >= 3
+	  quantity > 2
 	  AND
 	  TO_CHAR(invoice_date,'YYYY-MM') = '2022-11';
 
@@ -131,7 +131,8 @@ FROM retail_sales
 GROUP BY 1
 
 --4.Write a SQL query to find the average age of customers who purchased items from the 'Clothing' category.
-	AVG(age) AS avg_age
+SELECT	
+	AVG(age) as avg_age
 FROM retail_sales
 WHERE category='Clothing'
 
@@ -153,6 +154,7 @@ GROUP
 ORDER BY 1
 
 --7.Write a SQL query to calculate the average price for each month. Find out best selling month in each year.
+SELECT
 	year,
 	month,
 	avg_price
@@ -169,6 +171,7 @@ GROUP BY 1,2
 WHERE rank = 1
 
 --8.Write a SQL query to find the top 5 category based on the highest total price.
+SELECT
 	category,
 	SUM(price) as total_price
 FROM retail_sales 
@@ -208,5 +211,6 @@ SELECT
 FROM yearly_sale
 GROUP BY year
 ORDER BY year
+
 
 --End of the Project
