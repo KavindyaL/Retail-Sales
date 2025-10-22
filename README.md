@@ -49,6 +49,12 @@ CREATE TABLE retail_sales
 - *Null Value Check*: Check for any null values in the dataset and delete records with missing data.
 
 ```sql
+SELECT COUNT(*) as total_sale FROM retail_sales
+
+SELECT COUNT(customer_id) as total_sale FROM retail_sales
+
+SELECT DISTINCT category  FROM retail_sales
+
 SELECT * FROM retail_sales
 WHERE invoice_no IS NULL
 	  OR
@@ -90,10 +96,6 @@ WHERE invoice_no IS NULL
 	  invoice_date IS NULL
 	  OR
 	  shopping_mall IS NULL;
-
-SELECT COUNT(*) as total_sale FROM retail_sales
-SELECT COUNT(customer_id) as total_sale FROM retail_sales
-SELECT DISTINCT category  FROM retail_sales
 ```
 
 ### 3. Data Analysis & Findings
@@ -107,13 +109,13 @@ FROM retail_sales
 WHERE invoice_date = '2022-11-05';
 ```
 
-2. *Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022*:
+2. *Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 2 in the month of Nov-2022*:
 ```sql
 SELECT *
 FROM retail_sales
 WHERE category='Clothing'
 	  AND
-	  quantity >= 3
+	  quantity > 2
 	  AND
 	  TO_CHAR(invoice_date,'YYYY-MM') = '2022-11';
 ```
@@ -226,10 +228,10 @@ ORDER BY year
 
 ## Findings
 
-- *Customer Demographics*: The dataset includes customers from various age groups, with sales distributed across different categories such as Clothing and Beauty.
-- *High-Value Transactions*: Several transactions had a total sale amount greater than 1000, indicating premium purchases.
-- *Sales Trends*: Monthly analysis shows variations in sales, helping identify peak seasons.
-- *Customer Insights*: The analysis identifies the top-spending customers and the most popular product categories.
+- *Customer Demographics*: The dataset includes customers from various age groups, with sales distributed across different categories such as Clothing, Souvenir, Cosmetics, Books, Toys and Shoes.
+- *High-Value Transactions*: Several transactions had a price amount greater than 100, indicating premium purchases.
+- *Sales Trends*: Yearly analysis shows variations in sales, helping identify peak seasons.
+- *Customer Insights*: The analysis identifies the top category based on the highest total price.
 
 ## Reports
 
@@ -240,4 +242,5 @@ ORDER BY year
 ## Conclusion
 
 This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
+
 
